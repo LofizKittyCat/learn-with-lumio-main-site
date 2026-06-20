@@ -4,8 +4,6 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "../hooks/useTheme";
 import Header from "./Header";
 
-import MaintenancePage from "./routes/dev/MaintenancePage";
-
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { theme, toggle } = useTheme();
 
@@ -15,7 +13,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     location === "/login" ||
     location.startsWith("/login") ||
     location.startsWith("/dashboard") ||
-    location.startsWith("/account");
+    location.startsWith("/account") ||
+    location.startsWith("/maintenance");
 
   return (
     <div>
