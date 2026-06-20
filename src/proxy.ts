@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { get } from "@vercel/edge-config";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
+  if (process.env.NODE_ENV === "development") {
+    return NextResponse.next();
+  }
+
   const isMaintenance = await get<boolean>("maintenanceMode");
 
   if (isMaintenance && !request.nextUrl.pathname.startsWith("/maintenance")) {
