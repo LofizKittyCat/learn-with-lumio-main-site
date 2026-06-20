@@ -1,3 +1,5 @@
+"use client";
+
 import { CreditCard, Home, Search, Settings } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
