@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "../hooks/useTheme";
 import Header from "./Header";
 
-import { maintenanceMode } from "../lib/middleware";
 import MaintenancePage from "./routes/dev/MaintenancePage";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -17,10 +16,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     location.startsWith("/login") ||
     location.startsWith("/dashboard") ||
     location.startsWith("/account");
-
-  if (maintenanceMode!) {
-    return <MaintenancePage />;
-  }
 
   return (
     <div>
