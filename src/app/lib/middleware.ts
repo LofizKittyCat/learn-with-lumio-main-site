@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { get } from "@vercel/edge-config";
 
 export async function middleware(request: NextRequest) {
-  const isMaintenance = await get<boolean>("maintenance");
+  const isMaintenance = await get<boolean>("maintenanceMode");
 
   if (isMaintenance && !request.nextUrl.pathname.startsWith("/maintenance")) {
     return NextResponse.redirect(new URL("/maintenance", request.url));
