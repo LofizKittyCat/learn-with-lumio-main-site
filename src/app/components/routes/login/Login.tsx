@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { supabase } from "@/app/lib/supabase";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 type Mode = "signin" | "signup";
 
@@ -21,14 +22,15 @@ export function GoogleLoginBtn() {
   return (
     <button
       onClick={loginWithGoogle}
-      className="flex items-center justify-center p-2 bg-white cursor-pointer transition-all rounded-full"
+      className="flex flex-row gap-2 items-center justify-center py-2 px-4 bg-white cursor-pointer transition-all rounded-full"
     >
       <Image
         src="https://developers.google.com/identity/images/g-logo.png"
         alt="google_logo"
         width={32}
         height={32}
-      />
+      />{" "}
+      Google
     </button>
   );
 }
@@ -38,6 +40,7 @@ export default function LoginContent() {
 
   const [mode, setMode] = useState<Mode>("signin");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -65,18 +68,43 @@ export default function LoginContent() {
   }
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-white dark:bg-[#080C16]">
-      <div className="w-full max-w-md">
-        <div className="bg-white dark:bg-[#080C16] border border-slate-200 dark:border-white/8 rounded-xl p-8 shadow-2xl">
-          <h1 className="text-lg font-space-grotesk font-medium text-slate-800 dark:text-white mb-6">
-            {mode === "signin"
-              ? "Sign in to your account"
-              : "Create an account"}
-          </h1>
+    <div className="w-full min-h-screen flex items-center justify-center bg-bg-base">
+      <div className="z-50 absolute top-0 w-full flex flex-row items-start p-6">
+        <Link
+          href="/"
+          className="text-3xl text-slate-600 dark:text-white font-space-grotesk font-medium"
+        >
+          Lumio
+          <span className="font-serif">
+            <sup>©™</sup>
+          </span>
+        </Link>
+      </div>
 
+      <div className="w-full max-w-md">
+        <div className="w-full flex flex-col gap-4 mb-8">
+          <div className="w-full flex flex-row items-center justify-center">
+            <h1 className="text-4xl font-space-grotesk font-medium text-text-primary">
+              {mode === "signin"
+                ? "Sign in to your account"
+                : "Create an account"}
+            </h1>
+          </div>
+
+          <div className="w-full flex flex-col gap-3 items-center justify-center text-center">
+            <h2 className="text-md text-text-secondary">
+              {mode === "signin" ? "Sign in with" : "Sign up with"}
+            </h2>
+            <div className="w-full flex flex-row gap-4 items-center justify-center">
+              <GoogleLoginBtn />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-bg-base border border-border rounded-xl p-8 shadow-2xl">
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-slate-600 dark:text-slate-400">
+              <label className="text-sm font-medium text-text-secondary">
                 Email
               </label>
               <input
@@ -86,19 +114,36 @@ export default function LoginContent() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-white/10 bg-transparent text-slate-800 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-transparent text-text-primary focus:outline-none focus:ring-2 focus:ring-indigo"
               />
             </div>
 
+            {mode === "signup" && (
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-medium text-text-secondary">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  required
+                  autoComplete="username"
+                  placeholder="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-transparent text-text-primary focus:outline-none focus:ring-2 focus:ring-indigo"
+                />
+              </div>
+            )}
+
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                <label className="text-sm font-medium text-text-secondary">
                   Password
                 </label>
                 {mode === "signin" && (
                   <a
                     href="/login/forgot-password"
-                    className="text-xs text-indigo-500 hover:text-indigo-400 transition-colors"
+                    className="text-xs text-indigo hover:underline"
                   >
                     Forgot password?
                   </a>
@@ -113,7 +158,7 @@ export default function LoginContent() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-white/10 bg-transparent text-slate-800 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-transparent text-text-primary focus:outline-none focus:ring-2 focus:ring-indigo"
               />
             </div>
 
@@ -132,10 +177,6 @@ export default function LoginContent() {
                   : "Create account"}
             </button>
           </form>
-
-          <div className="mt-8 w-full flex flex-row gap-4 items-center justify-center">
-            <GoogleLoginBtn />
-          </div>
         </div>
 
         {/* Toggle */}
@@ -149,7 +190,7 @@ export default function LoginContent() {
               setError(null);
               setMessage(null);
             }}
-            className="text-indigo-500 hover:text-indigo-400 transition-colors font-medium cursor-pointer"
+            className="text-indigo hover:underline font-medium cursor-pointer"
           >
             {mode === "signin" ? "Sign up" : "Sign in"}
           </button>

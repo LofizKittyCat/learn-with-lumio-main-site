@@ -1,6 +1,6 @@
 export default function MaintenancePage() {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center text-center">
+    <div className="w-full min-h-screen flex flex-col bg-white dark:bg-[#080C16] items-center justify-center text-center">
       <h1 className="text-6xl font-space-grotesk font-bold">
         Maintenance Mode
       </h1>

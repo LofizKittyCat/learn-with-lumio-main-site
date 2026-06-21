@@ -11,10 +11,10 @@ const FEATURES = [
       "Every lesson drops you into a live editor. No setup, no installs — just write code and see it run in milliseconds. The environment is configured for the course, so you focus on learning, not tooling.",
     bg: "bg-indigo-50 dark:bg-indigo-950/30",
     visual: (
-      <div className="bg-white dark:bg-[#0D1221] rounded-xl border border-slate-100 dark:border-white/5 p-5 font-mono text-sm shadow-sm">
+      <div className="bg-bg-base rounded-xl border border-border p-5 font-mono text-sm shadow-2xl">
         <div className="flex items-center gap-2 mb-4">
-          <Terminal size={16} className="text-slate-600" />
-          <span className="ml-2 text-xs text-slate-400">main.py</span>
+          <Terminal size={16} className="text-text-secondary" />
+          <span className="ml-2 text-xs text-text-secondary">main.py</span>
         </div>
         <div className="space-y-1">
           <p>
@@ -37,12 +37,12 @@ const FEATURES = [
     ),
   },
   {
-    title: "AI feedback on every submission",
+    title: "Interactive Quizzes",
     description:
-      "Submit your solution and get line-level feedback tailored to where you are in the course. Not just 'wrong' — but why, and how to think about it differently next time.",
+      "Learn the basics of a subject through the integrated interactive quizzes. Concepts are not just explained, but they're illustrated through graphics to help you understand how a concept works.",
     bg: "bg-violet-50 dark:bg-violet-950/30",
     visual: (
-      <div className="bg-white dark:bg-[#0D1221] rounded-xl border border-slate-100 dark:border-white/5 p-5 shadow-sm space-y-3">
+      <div className="bg-bg-base rounded-xl border border-slate-100 dark:border-white/5 p-5 shadow-sm space-y-3">
         <div className="flex items-start gap-3">
           <div className="w-7 h-7 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center flex-shrink-0">
             <span className="text-indigo-500 text-xs font-bold">AI</span>
@@ -68,7 +68,7 @@ const FEATURES = [
           </div>
         </div>
         <div className="flex items-start gap-3 justify-end">
-          <div className="bg-indigo-600 rounded-xl rounded-tr-none px-4 py-3 text-sm text-white leading-relaxed max-w-[80%]">
+          <div className="bg-indigo rounded-xl rounded-tr-none px-4 py-3 text-sm text-text-primary leading-relaxed max-w-[80%]">
             Oh that makes sense — so both 0 and 1 are base cases?
           </div>
           <div className="w-7 h-7 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center flex-shrink-0 text-xs font-bold text-slate-500">
@@ -152,7 +152,7 @@ const FEATURES = [
 export default function HomeContent() {
   return (
     <>
-      <div className="w-full min-h-screen bg-white dark:bg-[#080C16] grid place-items-center">
+      <div className="w-full min-h-screen bg-bg-base grid place-items-center">
         <div className="relative max-w-6xl mx-auto px-6 py-24 w-full mt-32 mb-12">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col gap-6">
@@ -168,36 +168,36 @@ export default function HomeContent() {
                 it's doing.
               </h1>
 
-              <p className="text-slate-400 dark:text-slate-200 font-medium text-lg leading-relaxed max-w-md">
+              <p className="text-text-secondary font-medium text-lg leading-relaxed max-w-md">
                 Lumio doesn't just teach programming, it teaches logic. Lumio
                 provides interactive activities from code-writing, excercises,
                 videos, and data visualisation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <button className="bg-indigo-600 hover:bg-indigo-500 transition-all text-white font-medium px-6 py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer">
+                <button className="bg-indigo border-b-4 border-indigo-700 text-text-primary transition-all font-medium px-6 py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer">
                   Start for free
                   <ChevronRight size={16} />
                 </button>
 
-                <button className="border border-white/10 hover:border-white/20 text-slate-400 hover:text-slate-500 font-medium px-6 py-3 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                <button className="border border-border text-text-secondary hover:text-text-primary font-medium px-6 py-3 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer">
                   <Play size={16} />
                   Watch overview
                 </button>
               </div>
 
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-text-secondary">
                 No credit card required · 7-day free trial on Pro
               </p>
             </div>
 
             <div className="relative">
               <div className="glow absolute inset-0 rounded-2xl pointer-events-none" />
-              <div className="relative bg-white dark:bg-[#080C16] border border-white/8 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative bg-bg-base border border-border rounded-2xl overflow-hidden shadow-2xl">
                 {/* Terminal chrome */}
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-white dark:bg-[#080C16] dark:border-white/8">
-                  <Terminal size={16} className="text-slate-600" />
-                  <span className="ml-3 text-xs text-slate-600 font-mono">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-bg-base dark:border-white/8">
+                  <Terminal size={16} className="text-text-tertiary" />
+                  <span className="ml-3 text-xs text-text-tertiary font-mono">
                     lesson_5.py
                   </span>
                 </div>
@@ -207,12 +207,12 @@ export default function HomeContent() {
                 </div>
                 {/* Progress bar */}
                 <div className="px-6 pb-5">
-                  <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
+                  <div className="flex items-center justify-between text-xs text-text-secondary mb-2">
                     <span>Lesson 5 of 48</span>
                     <span>10% complete</span>
                   </div>
-                  <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full w-1/10 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full" />
+                  <div className="h-1 bg-bg-popover rounded-full overflow-hidden">
+                    <div className="h-full w-1/10 bg-gradient-to-r from-indigo to-violet-500 rounded-full" />
                   </div>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function HomeContent() {
         <section className="max-w-6xl mx-auto px-6 py-24">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div className="w-full">
-              <h2 className="display text-5xl font-space-grotesk font-bold text-slate-700 dark:text-slate-200 leading-tight justify-self-center">
+              <h2 className="display text-5xl font-space-grotesk font-bold text-text-primary leading-tight justify-self-center">
                 Here's what we do
               </h2>
             </div>
@@ -236,9 +236,7 @@ export default function HomeContent() {
                 className={`flex flex-col ${i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-12 items-center`}
               >
                 {/* Visual card */}
-                <div
-                  className={`w-full md:w-1/2 rounded-2xl p-8 ${feature.bg}`}
-                >
+                <div className={`w-full md:w-1/2 rounded-2xl p-8`}>
                   {feature.visual}
                 </div>
 
@@ -247,7 +245,7 @@ export default function HomeContent() {
                   <h2 className="font-space-grotesk text-3xl font-bold text-slate-900 dark:text-white leading-snug">
                     {feature.title}
                   </h2>
-                  <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <p className="text-text-secondary leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

@@ -10,7 +10,7 @@ export default function ThemeToggleButton({
   return (
     <button
       onClick={toggle}
-      className="cursor-pointer text-slate-400 dark:text-white transition-colors"
+      className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors"
     >
       {theme === "dark" ? <Moon size={20} /> : <Sun size={20} />}
     </button>

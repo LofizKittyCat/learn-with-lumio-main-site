@@ -13,7 +13,7 @@ export default function AuthButton() {
   if (user) {
     return (
       <div className="relative inline-block group">
-        <button className="text-sm text-slate-400 hover:text-slate-500 dark:text-slate-100 dark:hover:text-slate-200 transition-colors flex items-center justify-center gap-2 px-4 py-2 cursor-pointer">
+        <button className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center justify-center gap-2 px-4 py-2 cursor-pointer">
           <User size={20} />
           {user.user_metadata.name}
         </button>
@@ -45,7 +45,7 @@ export default function AuthButton() {
     );
   } else {
     return (
-      <button className="text-sm text-slate-400 hover:text-slate-500 dark:text-slate-100 dark:hover:text-slate-200 transition-colors flex items-center justify-center gap-2 px-4 py-2 cursor-pointer">
+      <button className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center justify-center gap-2 px-4 py-2 cursor-pointer">
         <Link href="/login" className="justify-center items-center flex gap-2">
           <User size={16} />
           Sign in

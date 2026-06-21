@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const CODE_LINES = [
   {
     text: "# lumio / python-basics / lesson-5-user-input",
-    color: "text-slate-500",
+    color: "text-text-tertiary",
   },
 
   { text: "", color: "" },
@@ -13,7 +13,7 @@ const CODE_LINES = [
 
   { text: "", color: "" },
 
-  { text: "# String formatting", color: "text-slate-500" },
+  { text: "# String formatting", color: "text-text-tertiary" },
   { text: 'print(f"You picked the color {color}")' },
 
   { text: "", color: "" },
@@ -45,7 +45,7 @@ export default function Code() {
   return (
     <div className="font-mono text-sm leading-6 select-none">
       {CODE_LINES.slice(0, visibleLines).map((line, i) => (
-        <div key={i} className={line.color || "text-slate-400"}>
+        <div key={i} className={line.color || "text-text-secondary"}>
           {line.text || "\u00A0"}
         </div>
       ))}

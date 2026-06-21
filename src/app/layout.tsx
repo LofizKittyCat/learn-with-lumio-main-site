@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, Rubik } from "next/font/google";
 import "./globals.css";
 import Layout from "./components/Layout";
+
+const rubik = Rubik({
+  variable: "--font-rubik",
+  subsets: ["latin"],
+});
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -19,7 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${rubik.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col">
         <Layout>{children}</Layout>
       </body>

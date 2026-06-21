@@ -14,7 +14,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     location.startsWith("/login") ||
     location.startsWith("/dashboard") ||
     location.startsWith("/account") ||
-    location.startsWith("/maintenance");
+    location.startsWith("/maintenance") ||
+    location.startsWith("/app");
 
   return (
     <div>

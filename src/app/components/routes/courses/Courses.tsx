@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabase";
-import { CourseCard } from "./CourseCard";
+import { CourseCard, CourseCardPlaceholder } from "./CourseCard";
 
 export interface Course {
   id: number;
@@ -35,13 +35,22 @@ export default function Courses() {
 
   if (loading) {
     return (
-      <div className="w-full min-h-screen bg-white dark:bg-[#080C16] justify-center items-center text-center">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className="h-64 rounded-xl bg-slate-100 dark:bg-slate-800 animate-pulse"
-          />
-        ))}
+      <div className="grid min-h-screen w-full place-items-center bg-white dark:bg-[#080C16] animate-pulse duration-350">
+        <div className="flex flex-col w-full p-6 2xl:p-12 opacity-88 items-center">
+          <div className="w-full max-w-7xl">
+            <div className="w-full flex flex-row justify-center mb-12">
+              <h1 className="font-space-grotesk font-medium text-4xl text-slate-700 dark:text-slate-300">
+                Loading courses, please wait...
+              </h1>
+            </div>
+
+            <div className="grid grid-cols-3 gap-6 2xl:gap-10">
+              {[...Array(6)].map((_, i) => (
+                <CourseCardPlaceholder key={i} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -56,8 +65,10 @@ export default function Courses() {
 
   if (courses.length === 0) {
     return (
-      <div className="w-full min-h-screen bg-white dark:bg-[#080C16] items-center justify-center text-center">
-        <p className="text-sm text-slate-500">No courses available yet.</p>
+      <div className="w-full min-h-screen flex flex-col bg-white dark:bg-[#080C16] items-center justify-center text-center">
+        <p className="text-2xl text-slate-400 dark:text-white font-space-grotesk font-medium">
+          No courses available yet. Try again later.
+        </p>
       </div>
     );
   }
@@ -72,6 +83,7 @@ export default function Courses() {
 
           {courses.map((course) => (
             <CourseCard
+              key={course.id}
               title={course.title}
               description={course.description}
               lessons={course.lessons}

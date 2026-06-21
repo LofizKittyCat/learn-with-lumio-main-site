@@ -1,25 +1,30 @@
 @import "tailwindcss";
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-}
-
 @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
     --font-space-grotesk: var(--font-space-grotesk);
-}
+    --font-rubik: var(--font-rubik);
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
+    --color-bg-base: #131313; /* Full-screen apps or deep background */
+    --color-bg-elevated: #1c1c1e; /* Standard app windows */
+    --color-bg-popover: #2c2c2e; /* Menus, modals, and popovers */
 
-body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    /* Typography */
+    --color-text-primary: rgba(255, 255, 255, 0.85);
+    --color-text-secondary: rgba(235, 235, 245, 0.6);
+    --color-text-tertiary: rgba(235, 235, 245, 0.3);
+
+    /* UI Elements */
+    --color-border: #38383a;
+    --color-divider: #545458;
+
+    /* HIG System Accents (Dark Mode Variants) */
+    --color-blue: #0a84ff;
+    --color-green: #32d74b;
+    --color-indigo: #5e5ce6;
+    --color-orange: #ff9f0a;
+    --color-pink: #ff375f;
+    --color-purple: #bf5af2;
+    --color-red: #ff453a;
+    --color-teal: #64d2ff;
+    --color-yellow: #ffd60a;
 }

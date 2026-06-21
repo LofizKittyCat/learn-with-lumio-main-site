@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "developers.google.com",
       },
+      {
+        protocol: "https",
+        hostname: "placehold.net",
+      },
     ],
   },
 };

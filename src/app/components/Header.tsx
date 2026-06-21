@@ -21,7 +21,7 @@ export default function Header({
   const { user } = useAuth();
 
   return (
-    <header className="z-50 sticky top-0 w-full flex transition-all duration-300 backdrop-blur-md border-b dark:bg-[#080C16] border-slate-200 dark:border-white/8">
+    <header className="z-50 absolute top-0 w-full flex transition-all duration-300 backdrop-blur-md border-b bg-bg-elevated border-divider shadow-lg">
       <nav className="w-full relative flex h-14 items-center px-6">
         <div className="flex-1 flex">
           <Link
@@ -40,7 +40,7 @@ export default function Header({
             <Link
               key={to}
               href={to}
-              className="text-sm text-slate-400 hover:text-slate-500 dark:text-slate-100 dark:hover:text-slate-300 transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
             >
               {label}
             </Link>
@@ -55,7 +55,7 @@ export default function Header({
           {!user && (
             <a
               href="pricing"
-              className="text-sm text-white font-medium bg-indigo-600 hover:bg-indigo-500 transition-colors px-4 py-2 rounded-lg cursor-pointer"
+              className="text-sm text-text-primary font-medium bg-indigo border-b-3 border-indigo-700 transition-colors px-4 py-2 rounded-lg cursor-pointer"
             >
               Get started free
             </a>
